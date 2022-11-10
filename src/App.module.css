@@ -1,9 +1,0 @@
-.app {
-  overflow: hidden;
-  height: 100%;
-
-  display: grid;
-  grid-template-columns: 200px auto;
-  grid-template-rows: 100px auto;
-  grid-template-areas: 'logo header' 'list chat';
-}

@@ -1,0 +1,39 @@
+.lobby {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	height: 100%;
+
+	background-image: linear-gradient(45deg, red, yellow);
+}
+
+.lobby form {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.lobby label:not(:last-of-type) {
+	margin-bottom: 1rem;
+}
+
+.lobby label {
+	display: inline-flex;
+
+	color: purple;
+
+	font-weight: bold;
+	font-size: xx-large;
+}
+
+.lobby input {
+	margin-left: 1em;
+	padding: 0.25rem;
+
+	border-radius: 0.25rem;
+	border: none;
+
+	font-size: large;
+}

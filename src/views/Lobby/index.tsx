@@ -32,6 +32,7 @@ const Lobby = () => {
 						onChange={(e) => setRoom(e.currentTarget.value)}
 					/>
 				</label>
+				<button type='submit'>Enter</button>
 			</form>
 		</main>
 	)

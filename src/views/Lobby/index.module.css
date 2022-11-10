@@ -37,3 +37,44 @@
 
 	font-size: large;
 }
+
+.lobby button {
+	margin-top: 2rem;
+	padding: 0.5rem 2.5rem;
+
+	border-radius: 0.25rem;
+	border: none;
+
+	color: red;
+
+	background: linear-gradient(
+		-45deg,
+		yellowgreen,
+		yellow,
+		orange,
+		yellow,
+		yellowgreen
+	);
+	background-size: 400% 400%;
+	background-position: 0% 50%;
+
+	font-size: xx-large;
+	font-weight: bold;
+}
+
+@keyframes buttonAnimation {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}
+
+.lobby button:hover {
+	cursor: pointer;
+	animation: buttonAnimation 5s ease infinite;
+}

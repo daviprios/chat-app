@@ -1,0 +1,17 @@
+.chat {
+  grid-area: chat;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  height: calc(100% - 10px);
+  width: calc(100% - 10px);
+
+  border: solid 1px black;
+}
+
+.chat > * {
+  height: 100%;
+  width: 100%;
+}

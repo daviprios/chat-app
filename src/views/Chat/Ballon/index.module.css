@@ -1,0 +1,38 @@
+.ballon {
+  margin: 1rem;
+  padding: 0.5em 1em;
+
+  width: fit-content;
+  max-width: 70%;
+  min-width: 250px;
+
+  background-color: #aaa;
+
+  border-radius: 0.5em;
+}
+
+.ballon > span {
+  display: block;
+}
+
+.name {
+  margin-bottom: 0.5em;
+  margin-right: auto;
+  
+  font-weight: bold;
+  font-size: small;
+}
+
+.message {
+  text-indent: 0.5em;
+}
+
+.datetime {
+  width: fit-content;
+  
+  margin-top: 0.2em;
+  margin-left: auto;
+
+  font-size: small;
+  font-weight: lighter;
+}

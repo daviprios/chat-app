@@ -38,28 +38,26 @@ const Chat = () => {
 	])
 
 	return (
-		<main className={styles.app}>
-			<section className={styles.chat}>
-				<div>
-					<ul>
-						{messages.map((message) => {
-							return (
-								<Ballon
-									senderName={message.senderName}
-									timestamp={message.timestamp}
-								>
-									{message.message}
-								</Ballon>
-							)
-						})}
-					</ul>
-					<form>
-						<input />
-						<button>Enviar {'>'}</button>
-					</form>
-				</div>
-			</section>
-		</main>
+		<section className={styles.chat}>
+			<div>
+				<ul>
+					{messages.map((message) => {
+						return (
+							<Ballon
+								senderName={message.senderName}
+								timestamp={message.timestamp}
+							>
+								{message.message}
+							</Ballon>
+						)
+					})}
+				</ul>
+				<form>
+					<input />
+					<button>Enviar {'>'}</button>
+				</form>
+			</div>
+		</section>
 	)
 }
 

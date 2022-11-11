@@ -1,7 +1,7 @@
 import { BrowserRouter, Routes as Switch, Route } from 'react-router-dom'
 
-import Chat from './views/Chat'
 import Lobby from './views/Lobby'
+import Room from './views/Room'
 
 function App() {
 	return (
@@ -9,7 +9,7 @@ function App() {
 			<Switch>
 				<Route path='/'>
 					<Route index element={<Lobby />} />
-					<Route path='/:room' element={<Chat />} />
+					<Route path='/:room' element={<Room />} />
 				</Route>
 			</Switch>
 		</BrowserRouter>

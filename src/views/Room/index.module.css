@@ -1,0 +1,12 @@
+.app {
+	overflow: hidden;
+
+	display: grid;
+	grid-template-columns: 200px auto;
+	grid-template-rows: 100px auto;
+	grid-template-areas: 'logo header' 'list chat';
+
+	height: 100%;
+
+	background-image: linear-gradient(135deg, orange, red);
+}

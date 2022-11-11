@@ -1,0 +1,13 @@
+.header {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+
+	margin-left: 1rem;
+
+	color: navy;
+
+	font-size: xx-large;
+	font-weight: bold;
+	text-transform: capitalize;
+}

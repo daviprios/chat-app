@@ -1,0 +1,31 @@
+.logo {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.logo a {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	height: 95%;
+	width: 95%;
+
+	color: purple;
+	background-color: transparent;
+
+	font-weight: bold;
+	font-size: large;
+
+	border: none;
+	border-radius: 1rem;
+
+	text-decoration: none;
+}
+
+.logo a:hover {
+	cursor: pointer;
+
+	background-color: #5555;
+}

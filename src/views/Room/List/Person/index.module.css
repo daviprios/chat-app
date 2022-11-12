@@ -1,0 +1,17 @@
+.person {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+
+	height: 3em;
+	width: 90%;
+
+	margin-bottom: 1rem;
+	padding-left: 1rem;
+
+	color: aliceblue;
+	background-color: blueviolet;
+
+	border: none;
+	border-radius: 0.5rem;
+}

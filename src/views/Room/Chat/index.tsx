@@ -1,102 +1,34 @@
-import { useState } from 'react'
-import Ballon from './Ballon'
+import { useEffect, useState } from 'react'
+
 import styles from './index.module.css'
 
-interface Message {
-	senderName: string
-	timestamp: Date
-	message: string
-}
+import MessageSend from '../../../api/events/emit/MessageSend'
+import MessageRecieve from '../../../api/events/on/MessageRecieve'
+
+import Ballon from './Ballon'
 
 const Chat = () => {
-	const [messages, setMessages] = useState<Message[]>([
-		{
-			message: 'Mensagem',
-			senderName: 'Me',
-			timestamp: new Date(),
-		},
-		{
-			message: 'Mensagem',
-			senderName: 'Me',
-			timestamp: new Date(),
-		},
-		{
-			message: 'Mensagem',
-			senderName: 'Me',
-			timestamp: new Date(),
-		},
-		{
-			message: 'Mensagem',
-			senderName: 'Me',
-			timestamp: new Date(),
-		},
-		{
-			message: 'Mensagem',
-			senderName: 'Me',
-			timestamp: new Date(),
-		},
-		{
-			message: 'Mensagem',
-			senderName: 'Me',
-			timestamp: new Date(),
-		},
-		{
-			message: 'Mensagem',
-			senderName: 'Me',
-			timestamp: new Date(),
-		},
-		{
-			message: 'Mensagem',
-			senderName: 'Me',
-			timestamp: new Date(),
-		},
-		{
-			message: 'Mensagem',
-			senderName: 'Me',
-			timestamp: new Date(),
-		},
-		{
-			message: 'Mensagem',
-			senderName: 'Me',
-			timestamp: new Date(),
-		},
-		{
-			message: 'Mensagem',
-			senderName: 'Me',
-			timestamp: new Date(),
-		},
-		{
-			message: 'Mensagem',
-			senderName: 'Me',
-			timestamp: new Date(),
-		},
-		{
-			message: 'Mensagem',
-			senderName: 'Me',
-			timestamp: new Date(),
-		},
-		{
-			message: 'Mensagem',
-			senderName: 'Me',
-			timestamp: new Date(),
-		},
-		{
-			message: 'Mensagem',
-			senderName: 'Me',
-			timestamp: new Date(),
-		},
-		{
-			message: 'Mensagem',
-			senderName: 'Me',
-			timestamp: new Date(),
-		},
-	])
+	const [messages, setMessages] = useState<{ message: string, senderName: string, timestamp: number }[]>([])
 
 	const [message, setMessage] = useState('')
 
 	const sendMessage: React.FormEventHandler<HTMLFormElement> = (e) => {
 		e.preventDefault()
+		
+		if(!message) return
+
+		MessageSend(message)
+		setMessage('')
 	}
+
+	useEffect(() => {
+		MessageRecieve((message, username, timestamp) => {
+			setMessages(prev => {
+				prev.push({message, senderName: username, timestamp})
+				return [...prev]
+			})
+		})
+	}, [])
 
 	return (
 		<section className={styles.chat}>
@@ -105,8 +37,9 @@ const Chat = () => {
 					{messages.map((message) => {
 						return (
 							<Ballon
+								key={JSON.stringify({ message })}
 								senderName={message.senderName}
-								timestamp={message.timestamp}
+								timestamp={new Date(message.timestamp)}
 							>
 								{message.message}
 							</Ballon>

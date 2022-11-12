@@ -5,13 +5,54 @@
 	justify-content: center;
 	align-items: center;
 
-	height: calc(100% - 10px);
-	width: calc(100% - 10px);
-
-	border: solid 1px black;
+	height: 100%;
 }
 
-.chat > * {
+.chat > div {
+	display: flex;
+	flex-direction: column;
+
 	height: 100%;
 	width: 100%;
+}
+
+.chat > div > ul{
+	flex-basis: 1px;
+	flex-grow: 1;
+	
+	overflow-y: auto;
+}
+
+.chat > div > form{
+	display: flex;
+
+	width: 100%;
+
+	padding: 1rem;
+}
+
+.chat > div > form > input{
+	flex-grow: 1;
+
+	width: auto;
+
+	padding-left: 1rem;
+
+	font-size: 125%;
+}
+
+.chat > div > form > button{
+	padding: 1rem 3rem;
+
+	color: orange;
+	background-color: purple;
+
+	border: none;
+
+	font-weight: bold;
+}
+
+.chat > div > form > button:hover{
+	cursor: pointer;
+	background-color: blueviolet;
 }

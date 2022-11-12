@@ -1,5 +1,6 @@
 .list {
 	grid-area: list;
+	overflow-y: auto;
 }
 
 .list ul {

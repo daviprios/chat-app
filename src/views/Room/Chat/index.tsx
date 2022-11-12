@@ -35,7 +35,68 @@ const Chat = () => {
 			senderName: 'Me',
 			timestamp: new Date(),
 		},
+		{
+			message: 'Mensagem',
+			senderName: 'Me',
+			timestamp: new Date(),
+		},
+		{
+			message: 'Mensagem',
+			senderName: 'Me',
+			timestamp: new Date(),
+		},
+		{
+			message: 'Mensagem',
+			senderName: 'Me',
+			timestamp: new Date(),
+		},
+		{
+			message: 'Mensagem',
+			senderName: 'Me',
+			timestamp: new Date(),
+		},
+		{
+			message: 'Mensagem',
+			senderName: 'Me',
+			timestamp: new Date(),
+		},
+		{
+			message: 'Mensagem',
+			senderName: 'Me',
+			timestamp: new Date(),
+		},
+		{
+			message: 'Mensagem',
+			senderName: 'Me',
+			timestamp: new Date(),
+		},
+		{
+			message: 'Mensagem',
+			senderName: 'Me',
+			timestamp: new Date(),
+		},
+		{
+			message: 'Mensagem',
+			senderName: 'Me',
+			timestamp: new Date(),
+		},
+		{
+			message: 'Mensagem',
+			senderName: 'Me',
+			timestamp: new Date(),
+		},
+		{
+			message: 'Mensagem',
+			senderName: 'Me',
+			timestamp: new Date(),
+		},
 	])
+
+	const [message, setMessage] = useState('')
+
+	const sendMessage: React.FormEventHandler<HTMLFormElement> = (e) => {
+		e.preventDefault()
+	}
 
 	return (
 		<section className={styles.chat}>
@@ -52,9 +113,9 @@ const Chat = () => {
 						)
 					})}
 				</ul>
-				<form>
-					<input />
-					<button>Enviar {'>'}</button>
+				<form onSubmit={sendMessage}>
+					<input value={message} onChange={e => setMessage(e.currentTarget.value)} />
+					<button type='submit'>Enviar</button>
 				</form>
 			</div>
 		</section>

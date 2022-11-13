@@ -6,7 +6,7 @@
   max-width: 70%;
   min-width: 250px;
 
-  background-color: #aaa;
+  background-color: rgb(238, 98, 98);
 
   border-radius: 0.5em;
 }
@@ -35,4 +35,23 @@
 
   font-size: small;
   font-weight: lighter;
+}
+
+.ballon.me {
+  margin-left: auto;
+
+  background-color: rgb(186, 212, 40);
+}
+
+.ballon.me .name {
+  text-align: end;
+}
+
+.ballon.me .message {
+  text-align: end;
+}
+
+.ballon.me .datetime{
+  margin-right: auto;
+  margin-left: 0;
 }

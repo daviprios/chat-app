@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
+import RoomList from '../../../api/events/emit/RoomList'
 import RoomEnter from '../../../api/events/on/RoomEnter'
 import RoomExit from '../../../api/events/on/RoomExit'
 import styles from './index.module.css'
@@ -17,6 +18,9 @@ const List = () => {
 	}, [people])
 
 	useEffect(() => {
+		RoomList((users) => {
+			setPeople(new Set(users))
+		})
 		RoomEnter((users) => {
 			setPeople(new Set(users))
 		})

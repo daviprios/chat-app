@@ -40,6 +40,7 @@ const Chat = () => {
 								key={JSON.stringify({ message })}
 								senderName={message.senderName}
 								timestamp={new Date(message.timestamp)}
+								isMe={location.search.search(`nickname=${message.senderName}`) > 0}
 							>
 								{message.message}
 							</Ballon>

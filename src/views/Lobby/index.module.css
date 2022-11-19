@@ -22,6 +22,8 @@
 .lobby label {
 	display: inline-flex;
 
+	max-width: 100vw;
+
 	color: purple;
 
 	font-weight: bold;
@@ -77,4 +79,15 @@
 .lobby button:hover {
 	cursor: pointer;
 	animation: buttonAnimation 5s ease infinite;
+}
+
+@media only screen and (max-width: 768px) {
+	.lobby label {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.lobby label input {
+		width: 100%;
+	}
 }

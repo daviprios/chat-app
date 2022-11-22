@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useLayoutEffect, useRef, useState } from 'react'
 
 import styles from './index.module.css'
 
@@ -9,8 +9,10 @@ import Ballon from './Ballon'
 
 const Chat = () => {
 	const [messages, setMessages] = useState<{ message: string, senderName: string, timestamp: number }[]>([])
-
 	const [message, setMessage] = useState('')
+
+	const [toScroll, setToScroll] = useState(true)
+	const ref = useRef<HTMLUListElement>(null)
 
 	const sendMessage: React.FormEventHandler<HTMLFormElement> = (e) => {
 		e.preventDefault()
@@ -21,19 +23,21 @@ const Chat = () => {
 		setMessage('')
 	}
 
-	useEffect(() => {
-		MessageRecieve((message, username, timestamp) => {
-			setMessages(prev => {
-				prev.push({message, senderName: username, timestamp})
-				return [...prev]
-			})
+	MessageRecieve((message, username, timestamp) => {
+		setMessages(prev => {
+			prev.push({message, senderName: username, timestamp})
+			return [...prev]
 		})
-	}, [])
+	})
+
+	useLayoutEffect(() => {
+ 		if (ref.current && toScroll) ref.current.scrollTop = ref.current.scrollHeight
+	}, [messages])
 
 	return (
 		<section className={styles.chat}>
 			<div>
-				<ul>
+				<ul ref={ref} onScroll={() => setToScroll(ref.current ? ref.current.scrollTop === ref.current.scrollHeight - ref.current.clientHeight : false)}>
 					{messages.map((message) => {
 						return (
 							<Ballon

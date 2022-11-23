@@ -1,7 +1,10 @@
+import { useEffect } from "react";
 import connection from "../../connection";
 
 export default (callback: () => void) => {
-  connection.on('room-enter-fail', () => {
-    callback()
-  })
+  const eventName = 'room-enter-fail'
+  useEffect(() => {
+    connection.on(eventName, callback)
+    return () => { connection.removeListener(eventName, callback) }
+  }, [])
 }

@@ -17,19 +17,18 @@ const List = () => {
 		return usernameList
 	}, [people])
 
-	useEffect(() => {
-		RoomList((users) => {
-			console.log(users)
-			setPeople(new Set(users))
-		})
-		RoomEnter((users) => {
-			setPeople(new Set(users))
-		})
-		RoomExit((username) => {
+	RoomList((users) => {
+		setPeople(new Set(users))
+	})
+	RoomEnter((users) => {
+		setPeople(new Set(users))
+	})
+	RoomExit((username) => {
+		setPeople(people => {
 			people.delete(username)
-			setPeople(people => new Set(people))
+			return new Set(people)
 		})
-	}, [])
+	})
 
 	return (
 		<aside className={styles.list}>

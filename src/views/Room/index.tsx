@@ -23,10 +23,8 @@ const Room = () => {
 			.split('/')[1]
 
 		console.log(room, nickname)
-		if(!room || !nickname || !nickname[1]) {
-			console.log('return')
+		if(!room || !nickname || !nickname[1])
 			return navigator(`${location.pathname}${location.search}`)
-		}
 		
 		RoomEnterEmit(room[1], nickname[1])
 	}, [])

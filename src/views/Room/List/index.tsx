@@ -19,6 +19,7 @@ const List = () => {
 
 	useEffect(() => {
 		RoomList((users) => {
+			console.log(users)
 			setPeople(new Set(users))
 		})
 		RoomEnter((users) => {

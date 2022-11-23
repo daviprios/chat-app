@@ -1,9 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import styles from './index.module.css'
 
 import RoomEnterEmit from '../../api/events/emit/RoomEnter'
-import RoomEnterSuccess from '../../api/events/on/RoomEnterSuccess'
 
 const Lobby = () => {
 	const navigate = useNavigate()
@@ -14,13 +13,8 @@ const Lobby = () => {
 	const submit: React.FormEventHandler<HTMLFormElement> = (e) => {
 		e.preventDefault()
 		RoomEnterEmit(room, nickname)
+		navigate(`/${room}?nickname=${nickname}`)
 	}
-	
-	useEffect(() => {
-		RoomEnterSuccess(() => {
-			navigate(`/${room}?nickname=${nickname}`)
-		})
-	}, [room, nickname])
 
 	return (
 		<main className={styles.lobby}>

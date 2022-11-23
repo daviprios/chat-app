@@ -19,6 +19,7 @@ const Chat = () => {
 		
 		if(!message) return
 
+		if(ref.current) ref.current.scrollTop = ref.current.scrollHeight
 		MessageSend(message)
 		setMessage('')
 	}

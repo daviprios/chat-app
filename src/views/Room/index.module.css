@@ -3,10 +3,65 @@
 
 	display: grid;
 	grid-template-columns: 200px auto;
+	grid-template-areas: 'aside main';
+	
+	height: 100%;
+	
+	background-image: linear-gradient(135deg, orange, red);
+}
+
+.aside {
+	grid-area: aside;
+
+	display: grid;
 	grid-template-rows: 100px auto;
-	grid-template-areas: 'logo header' 'list chat';
+	grid-template-areas: 'logo' 'list';
+	
+	height: 100%;
+}
+
+.main {
+	grid-area: main;
+
+	display: grid;
+	grid-template-rows: 100px auto;
+	grid-template-areas: 'header' 'chat';
 
 	height: 100%;
+}
 
-	background-image: linear-gradient(135deg, orange, red);
+@media only screen and (max-width: 768px) {
+	.app {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.aside {
+		display: flex;
+		flex-direction: column;
+		
+		flex-basis: 0;
+		flex-shrink: 1;
+		
+		height: 200px;
+	}
+	
+	.aside figure{
+		height: 100px;
+	}
+	
+	.aside > section > ul{
+		overflow-x: auto;
+		
+		flex-direction: row;
+		justify-content: flex-start;
+		align-items: flex-start;
+
+		padding: 0 1rem;
+	}
+
+	.aside li{
+		width: fit-content;
+		margin-right: 5px;
+	}
 }

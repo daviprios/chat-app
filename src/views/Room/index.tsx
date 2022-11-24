@@ -14,27 +14,30 @@ const Room = () => {
 	const navigator = useNavigate()
 
 	useEffect(() => {
-		const nickname = location.search
-			.substring(1, location.search.length - 1)
-			.split('&')
-			.map((query) => query.split('='))
-			.find(item => item[0] === 'nickname')
-		const room = location.pathname
-			.split('/')[1]
-
-		console.log(room, nickname)
-		if(!room || !nickname || !nickname[1])
-			return navigator(`${location.pathname}${location.search}`)
+		const nicknameFullString = location.search
+		.substring(1, location.search.length)
+		.split('&')
+		.map((query) => query.split('='))
+		.find(item => item[0] === 'nickname')
 		
-		RoomEnterEmit(room[1], nickname[1])
+		const nickname = nicknameFullString ? nicknameFullString[1] : null
+		const room = location.pathname.split('/')[1]
+		
+		if(!room || !nickname) return navigator(`${location.pathname}${location.search}`)
+		
+		RoomEnterEmit(room, nickname)
 	}, [])
 
 	return (
 		<main className={styles.app}>
-			<Logo />
-			<Header />
-			<List />
-			<Chat />
+			<aside className={styles.aside}>
+				<Logo />
+				<List />
+			</aside>
+			<main className={styles.main}>
+				<Header />
+				<Chat />
+			</main>
 		</main>
 	)
 }

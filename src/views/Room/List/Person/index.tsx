@@ -1,7 +1,7 @@
 import styles from './index.module.css'
 
 const Person = (props: { children: string }) => {
-	return <div className={styles.person}>{props.children}</div>
+	return <li className={styles.person}>{props.children}</li>
 }
 
 export default Person

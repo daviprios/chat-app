@@ -31,13 +31,13 @@ const List = () => {
 	})
 
 	return (
-		<aside className={styles.list}>
+		<section className={styles.list}>
 			<ul>
 				{peopleList().map((person) => {
 					return <Person key={person}>{person}</Person>
 				})}
 			</ul>
-		</aside>
+		</section>
 	)
 }
 

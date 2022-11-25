@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState } from 'react'
+import { useEffect, useLayoutEffect, useRef, useState } from 'react'
 
 import styles from './index.module.css'
 
@@ -6,10 +6,12 @@ import MessageSend from '../../../api/events/emit/MessageSend'
 import MessageRecieve from '../../../api/events/on/MessageRecieve'
 
 import Ballon from './Ballon'
+import InfoBallon from './InfoBallon'
 
 const Chat = () => {
 	const [messages, setMessages] = useState<{ message: string, senderName: string, timestamp: number }[]>([])
 	const [message, setMessage] = useState('')
+	const [lastMessageTime, setLastMessageTime] = useState(0)
 
 	const [toScroll, setToScroll] = useState(true)
 	const ref = useRef<HTMLUListElement>(null)
@@ -31,6 +33,23 @@ const Chat = () => {
 		})
 	})
 
+	useEffect(() => {
+		if(messages.length > 0) {
+			const lastDate = new Date(lastMessageTime)
+			const currentDate = new Date(messages[messages.length - 1].timestamp)
+			if(lastDate.getFullYear() !== currentDate.getFullYear() ||
+				lastDate.getMonth() !== currentDate.getMonth() ||
+				lastDate.getDate() !== currentDate.getDate()
+			) {
+				const lastMessage = messages.pop()!
+				messages.push({ message: Intl.DateTimeFormat().format(new Date()), senderName: 'admin', timestamp: Date.now() })
+				messages.push(lastMessage)
+				setLastMessageTime(messages[messages.length - 1].timestamp)
+				setMessages([...messages])
+			}
+		}
+	}, [messages, lastMessageTime])
+
 	useLayoutEffect(() => {
  		if (ref.current && toScroll) ref.current.scrollTop = ref.current.scrollHeight
 	}, [messages])
@@ -39,14 +58,22 @@ const Chat = () => {
 		<section className={styles.chat}>
 			<div>
 				<ul ref={ref} onScroll={() => setToScroll(ref.current ? ref.current.scrollTop === ref.current.scrollHeight - ref.current.clientHeight : false)}>
+					<InfoBallon>
+						You entered in the room
+					</InfoBallon>
 					{messages.map((message) => {
-						return (
+						return  message.senderName === 'admin'
+						? (
+							<InfoBallon key={JSON.stringify({ message })}>
+								{message.message}
+							</InfoBallon>
+						) : (
 							<Ballon
 								key={JSON.stringify({ message })}
 								senderName={message.senderName}
 								timestamp={new Date(message.timestamp)}
 								isMe={location.search.search(`nickname=${message.senderName}`) > 0}
-							>
+								>
 								{message.message}
 							</Ballon>
 						)

@@ -39,7 +39,7 @@
 
 .ballon.me {
   margin-left: auto;
-  margin-right: 0;
+  margin-right: 0.5rem;
 
   background-color: rgb(186, 212, 40);
 }

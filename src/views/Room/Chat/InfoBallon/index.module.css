@@ -1,0 +1,12 @@
+.infoBallon {
+  width: fit-content;
+  max-width: 50%;
+
+  margin: 0.5rem auto;
+  padding: 1rem;
+
+  color: wheat;
+  background-color: rgb(145, 40, 11);
+
+  border-radius: 1rem;
+}

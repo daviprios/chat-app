@@ -51,13 +51,16 @@ const Chat = () => {
 	}, [messages, lastMessageTime])
 
 	useLayoutEffect(() => {
- 		if (ref.current && toScroll) ref.current.scrollTop = ref.current.scrollHeight
+		if (ref.current && toScroll)
+			ref.current.scrollTop = ref.current.scrollHeight
 	}, [messages])
 
 	return (
 		<section className={styles.chat}>
 			<div>
-				<ul ref={ref} onScroll={() => setToScroll(ref.current ? ref.current.scrollTop === ref.current.scrollHeight - ref.current.clientHeight : false)}>
+				<ul ref={ref} onScroll={() => setToScroll(ref.current ?
+						ref.current.scrollTop - Math.abs(ref.current.scrollHeight - ref.current.clientHeight) < 10
+						: false)}>
 					<InfoBallon>
 						You entered in the room
 					</InfoBallon>

@@ -9,7 +9,7 @@ import Ballon from './Ballon'
 import InfoBallon from './InfoBallon'
 
 const Chat = () => {
-	const [messages, setMessages] = useState<{ message: string, senderName: string, timestamp: number }[]>(() => JSON.parse(localStorage.getItem('messages') ?? '[]'))
+	const [messages, setMessages] = useState<{ message: string, senderName: string, timestamp: number }[]>(() => JSON.parse(localStorage.getItem(`messages-${location.pathname.split('/')[1]}`) ?? '[]'))
 	const [message, setMessage] = useState('')
 	const [lastMessageTime, setLastMessageTime] = useState(() => Number(localStorage.getItem('lastTime')) || 0)
 
@@ -56,7 +56,7 @@ const Chat = () => {
 	}, [messages])
 
 	useEffect(() => {
-		localStorage.setItem('messages', JSON.stringify(messages))
+		localStorage.setItem(`messages-${location.pathname.split('/')[1]}`, JSON.stringify(messages))
 		localStorage.setItem('lastTime', String(lastMessageTime))
 	}, [messages])
 

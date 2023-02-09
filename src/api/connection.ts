@@ -1,5 +1,5 @@
 import { io } from 'socket.io-client'
+import env from '@/config/env'
 
-const apiUrl = import.meta.env.VITE_API_URL ?? 'http://localhost:8000'
-
+const apiUrl = env.API_URL ?? 'http://localhost:8000'
 export default io(apiUrl)

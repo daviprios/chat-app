@@ -1,19 +1,19 @@
 import { BrowserRouter, Routes as Switch, Route } from 'react-router-dom'
+import Lobby from '@/views/Lobby'
+import Room from '@/views/Room'
+import paths from '@/utils/paths'
 
-import Lobby from './views/Lobby'
-import Room from './views/Room'
-
-function App() {
+const Routes = () => {
 	return (
 		<BrowserRouter>
 			<Switch>
-				<Route path='/'>
-					<Route index element={<Lobby />} />
-					<Route path='/:room' element={<Room />} />
+				<Route>
+					<Route path={paths.lobby} element={<Lobby />} />
+					<Route path={paths.room} element={<Room />} />
 				</Route>
 			</Switch>
 		</BrowserRouter>
 	)
 }
 
-export default App
+export default Routes

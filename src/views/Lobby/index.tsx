@@ -1,8 +1,9 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import styles from './index.module.css'
+import styles from './index.module.sass'
 
-import RoomEnterEmit from '../../api/events/emit/RoomEnter'
+import RoomEnterEmit from '@/api/events/emit/RoomEnter'
+import InputText from '@/components/Form/InputText'
 
 const Lobby = () => {
 	const navigate = useNavigate()
@@ -20,20 +21,12 @@ const Lobby = () => {
 		<main className={styles.lobby}>
 			<form onSubmit={submit}>
 				<label>
-					Nickname
-					<input
-						type={'text'}
-						value={nickname}
-						onChange={(e) => setNickname(e.currentTarget.value)}
-					/>
+					<span>Nickname</span>
+					<InputText getValue={nickname => setNickname(nickname)}/>
 				</label>
 				<label>
-					Room
-					<input
-						type={'text'}
-						value={room}
-						onChange={(e) => setRoom(e.currentTarget.value)}
-					/>
+					<span>Room</span>
+					<InputText getValue={room => setRoom(room)}/>
 				</label>
 				<button type='submit'>Enter</button>
 			</form>

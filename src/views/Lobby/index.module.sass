@@ -1,0 +1,61 @@
+@use '@/styles/colors'
+
+.lobby
+	display: flex
+	justify-content: center
+	align-items: center
+
+	height: 100%
+	background-color: colors.$purple-4
+
+	form
+		display: flex
+		justify-content: center
+		align-items: center
+		flex-direction: column
+
+		width: 500px
+		max-width: 95vw
+
+		label
+			display: flex
+			flex-direction: column
+
+			width: 100%
+			color: colors.$purple-2
+
+			font-weight: bold
+			font-size: xx-large
+
+			&:not(:last-of-type)
+				margin-bottom: 1.5rem
+
+		button
+			margin-top: 2rem
+			padding: 0.5rem 2.5rem
+
+			width: 100%
+
+			border-radius: 0.25rem
+			border: none
+
+			color: colors.$purple-3
+
+			background: colors.$purple-5
+			background-size: 400% 400%
+			background-position: 0% 50%
+
+			font-size: xx-large
+			font-weight: bold
+
+			&:hover
+				cursor: pointer
+				animation: buttonAnimation 5s ease infinite
+
+@keyframes buttonAnimation
+	0%
+		background-position: 0% 50%
+	50%
+		background-position: 100% 50%
+	100%
+		background-position: 0% 50%
